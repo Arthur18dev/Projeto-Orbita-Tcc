@@ -333,6 +333,22 @@ function Journey() {
 }
 
 function Launch() {
+  const [registered, setRegistered] = useState(false);
+  const [showToast, setShowToast] = useState(false);
+
+  function handleRegister() {
+    if (registered) return; // já registrou, ignora novos cliques
+    setRegistered(true);
+    setShowToast(true);
+  }
+
+  // o card some sozinho depois de 5 segundos
+  useEffect(() => {
+    if (!showToast) return;
+    const timer = setTimeout(() => setShowToast(false), 8000);
+    return () => clearTimeout(timer);
+  }, [showToast]);
+
   return (
     <section className="launch" id="lancamento">
       <div className="launch-orbits" aria-hidden="true">
@@ -354,12 +370,35 @@ function Launch() {
           <br />
           Em breve, seu universo vai ganhar um novo endereço.
         </p>
-        <span className="launch-badge">
-          <a>EM BREVE</a> <span>↗</span>
-        </span>
+
+        <div className="launch-action">
+          <button
+            type="button"
+            className="launch-badge"
+            onClick={handleRegister}
+            disabled={registered}
+          >
+            <strong>{registered ? "REGISTRADO" : "EM BREVE"}</strong>{" "}
+            <span>{registered ? "✓" : "↗"}</span>
+          </button>
+        </div>
+
         <p className="launch-footnote">
           Sem data artificial. Com espaço para grandes ideias.
         </p>
+      </div>
+
+      {/* Fora da div.reveal para o position: fixed funcionar */}
+      <div aria-live="polite">
+        {showToast && (
+          <div className="register-card">
+            <span className="register-check">✓</span>
+            <div>
+              <strong>Você foi registrado</strong>
+              <small>Avisaremos quando entrarmos em órbita.</small>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
