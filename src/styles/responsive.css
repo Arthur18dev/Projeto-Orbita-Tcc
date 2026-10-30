@@ -1,0 +1,231 @@
+@media (min-width: 1600px) {
+  .origin-inner {
+    margin-right: 8%;
+  }
+}
+
+@media (max-width: 1000px) {
+  nav {
+    gap: 20px;
+  }
+  .hero h1 {
+    font-size: 64px;
+  }
+  .hero-copy {
+    max-width: 550px;
+  }
+  .orbital-label {
+    position: static;
+    margin-top: 40px;
+  }
+  .origin-inner {
+    width: 62%;
+  }
+  .mission-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .platform h2 {
+    font-size: 37px;
+  }
+  .mission-select button div {
+    font-size: 15px;
+  }
+  .section-heading {
+    flex-wrap: wrap;
+  }
+  .manifesto-statement {
+    letter-spacing: -1.8px;
+  }
+}
+
+@media (max-width: 759px) {
+  header {
+    padding: 22px 6%;
+  }
+  .brand {
+    font-size: 27px;
+  }
+  .logo {
+    font-size: 34px;
+  }
+  .wordmark-caption {
+    display: none;
+  }
+  nav > a:not(.nav-status) {
+    display: none;
+  }
+  .nav-status {
+    padding: 10px 14px;
+    font-size: 10px;
+  }
+  .hero {
+    padding-top: 45px;
+    min-height: 1000px;
+    background: linear-gradient(#07110ef5 0%, #07110ed9 35%, #07110e00 70%);
+  }
+  .hero-copy {
+    max-width: 100%;
+  }
+  .hero h1 {
+    font-size: clamp(44px, 10.4vw, 70px);
+    letter-spacing: -2px;
+    line-height: 1.08;
+  }
+  .hero p,
+  .origin p,
+  .launch p {
+    font-size: 16px;
+  }
+  .hero-note p {
+    font-size: 13px;
+  }
+  .button {
+    padding: 15px 21px;
+    font-size: 14px;
+    margin-top: 12px;
+  }
+  .hero-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 6%;
+    right: 6%;
+    font-size: 13px;
+    letter-spacing: 1px;
+  }
+  .hero-bottom > span:last-child {
+    display: none;
+  }
+  .hero-bottom > span:first-child {
+    max-width: 140px;
+    line-height: 1.8;
+  }
+  .orbital-label {
+    position: absolute;
+    top: auto;
+    bottom: 100px;
+    right: 8%;
+    font-size: 13px;
+    margin-top: 0;
+  }
+  .orbital-label > span {
+    max-width: 180px;
+    line-height: 1.8;
+  }
+  .origin {
+    min-height: auto;
+    padding: 80px 6%;
+    background: linear-gradient(#07110e99, #07110ef5);
+  }
+  .origin-inner {
+    width: 100%;
+    max-width: none;
+    padding: 25px;
+    border: 1px solid var(--line);
+    background: #0b1b13cc;
+  }
+  .origin h2 {
+    font-size: 39px;
+  }
+  .orbit-coordinate {
+    display: none;
+  }
+  .manifesto,
+  .platform,
+  .journey {
+    padding: 65px 6%;
+  }
+  .section-heading {
+    display: block;
+  }
+  .section-heading > .small-mono {
+    display: none;
+  }
+  .manifesto-statement {
+    font-size: 33px;
+    letter-spacing: -1.4px;
+    margin: 35px 0;
+  }
+  .manifesto-bottom {
+    gap: 20px;
+  }
+  .manifesto-bottom .cross {
+    font-size: 42px;
+  }
+  .manifesto-bottom p {
+    font-size: 15px;
+  }
+  .platform h2 {
+    font-size: 32px;
+    letter-spacing: -1.3px;
+  }
+  .outline-label {
+    display: inline-block;
+    margin-top: 25px;
+  }
+  .mission-layout {
+    display: block;
+    margin-top: 30px;
+  }
+  .mission-select {
+    margin-bottom: 25px;
+  }
+  .mission-select button {
+    padding: 18px 12px;
+  }
+  .mission-select button small {
+    margin-bottom: 6px;
+    font-size: 11px;
+  }
+  .mission-art {
+    height: 200px;
+  }
+  .mission-text {
+    padding: 25px;
+  }
+  .mission-text h3 {
+    font-size: 26px;
+  }
+  .mission-text .eyebrow {
+    font-size: 11px;
+  }
+  .concept-note {
+    text-align: left;
+    font-size: 11px;
+  }
+  .universe,
+  .fallback-space {
+    position: absolute;
+    top: 80px;
+    height: 1000px;
+    bottom: auto;
+  }
+  .fallback-planet {
+    width: 75vw;
+    height: 75vw;
+    top: 53%;
+    right: 12%;
+  }
+  .fallback-ring {
+    top: 53%;
+    width: 110vw;
+    height: 40vw;
+    right: -6%;
+  }
+}
+
+@media (max-width: 480px) {
+  .motion-toggle span {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero h1 {
+    font-size: 40px;
+  }
+  .button,
+  .launch-badge {
+    gap: 24px;
+  }
+}

@@ -1,3 +1,5 @@
+- Versão 2.0 do site 
+
 # Órbita — Em breve
 
 Página conceitual em português, React + Vite + Three.js, responsiva. A Órbita é uma futura base para portfólios e projetos, inspirada em missões espaciais. Marca fictícia para o TCC, sem vínculo com empresas reais. Não há formulário de cadastro nem promessa de lançamento em uma data fictícia.

@@ -1,7 +1,7 @@
 import React, { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { createRoot } from "react-dom/client";
 import { recordPageView } from "./analytics";
-import "./style.css";
+import './styles/style.css';
 
 const Universe = lazy(() => import("./Universe"));
 
@@ -42,13 +42,17 @@ function Arrow() {
 function SocialIcon({ platform }) {
   const paths = {
     linkedin: (
-      <path d="M5 9v10M5 5v.01M10 19v-10h4v1.6c.7-1.1 1.6-1.8 3-1.8 2.5 0 3 1.7 3 4.2V19M2 2h20v20H2z" />
+      <>
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+        <rect width="4" height="12" x="2" y="9" />
+        <circle cx="4" cy="4" r="2" />
+      </>
     ),
     instagram: (
       <>
-        <rect x="2" y="2" width="20" height="20" rx="5" />
-        <circle cx="12" cy="12" r="4" />
-        <circle cx="18" cy="6" r=".7" fill="currentColor" stroke="none" />
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
       </>
     ),
     x: <path d="M3 3h4l14 18h-4L3 3Zm18 0L3 21" />,
@@ -59,7 +63,7 @@ function SocialIcon({ platform }) {
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
-      strokeWidth="1.6"
+      strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
@@ -159,7 +163,7 @@ function Hero() {
       </div>
       <div className="hero-bottom">
         <span>SEU TRABALHO TEM UM UNIVERSO À FRENTE</span>
-        <a href="#origem">ROLE PARA EXPLORAR ↓</a>
+        <a href="#origem">ROLE PARA EXPLORAR <span className="scroll-arrow" aria-hidden="true">↓</span></a>
         <span>BRASIL · PLANETA TERRA</span>
       </div>
     </section>
@@ -300,7 +304,9 @@ function Journey() {
       <div className="timeline">
         <article className="reveal" tabIndex={0}>
           <span className="step">01</span>
-          <small>ORIGEM</small>
+          <small>
+            <span className="dot" /> ORIGEM
+            </small>
           <h3>Uma inquietação.</h3>
           <p>
             Boas ideias precisam de mais do que uma vitrine. Precisam de
@@ -320,7 +326,9 @@ function Journey() {
         </article>
         <article className="reveal" tabIndex={0}>
           <span className="step">03</span>
-          <small>PRÓXIMO CAPÍTULO</small>
+          <small>
+            <span className="dot" /> PRÓXIMO CAPÍTULO
+            </small>
           <h3>Entrar em órbita.</h3>
           <p>
             Abrir as portas para quem quer colocar seu trabalho no mundo. A
@@ -394,8 +402,8 @@ function Launch() {
           <div className="register-card">
             <span className="register-check">✓</span>
             <div>
-              <strong>Você foi registrado</strong>
-              <small>Avisaremos quando entrarmos em órbita.</small>
+              <strong>Sua presença foi confirmada</strong>
+              <small>Obrigado por sua visita!</small>
             </div>
           </div>
         )}
@@ -459,7 +467,6 @@ function Footer({ onPrivacyClick }) {
             key={platform}
             href={socialUrls[platform]}
             className="social-icon"
-            role="img"
             aria-label={`${platform} em breve`}
             title={`${platform} em breve`}
           >

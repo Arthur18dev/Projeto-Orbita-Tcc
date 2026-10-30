@@ -1,0 +1,142 @@
+.journey {
+  padding: 95px 7%;
+  position: relative;
+  background: #0c1b13f5;
+  border-top: 1px solid var(--line);
+}
+.journey .section-heading {
+  align-items: start;
+}
+.journey h2 {
+  margin: 0;
+  font-size: 42px;
+}
+.timeline {
+  max-width: 1280px;
+  margin: 70px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 40px;
+}
+.timeline article {
+  border-top: 1px solid #9cab7d44;
+  padding-top: 25px;
+  position: relative;
+  cursor: pointer;
+  transform-origin: left top;
+  transition:
+    transform 0.5s ease,
+    border-color 0.5s ease,
+    opacity 0.9s;
+}
+.timeline article::before {
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #65765e;
+  transition:
+    background 0.5s ease,
+    box-shadow 0.5s ease;
+}
+.step {
+  font: 38px Manrope;
+  color: #59705a;
+  display: block;
+  margin-bottom: 25px;
+}
+.timeline small {
+  font: 13px monospace;
+  color: #adc198;
+  letter-spacing: 1.5px;
+}
+.timeline h3 {
+  font-size: 24px;
+  letter-spacing: -1px;
+  margin: 16px 0;
+}
+.timeline p {
+  font-size: 16px;
+  max-width: 310px;
+}
+.timeline .dot {
+  width: 6px;
+  height: 6px;
+  margin-right: 9px;
+  background: #65765e;
+  box-shadow: none;
+  transition:
+    background 0.5s ease,
+    box-shadow 0.5s ease,
+    transform 0.5s ease;
+}
+.timeline .current .dot {
+  box-shadow: 0 0 12px #c3ef9766;
+}
+.timeline article:hover,
+.timeline article:focus-visible {
+  transform: scale(1.06);
+  border-top-color: var(--lime);
+}
+.timeline article:hover::before,
+.timeline article:focus-visible::before {
+  background: var(--lime);
+  box-shadow: 0 0 18px #bddc87;
+}
+.timeline article:hover .step,
+.timeline article:focus-visible .step,
+.timeline article:hover small,
+.timeline article:focus-visible small {
+  color: var(--lime);
+}
+.timeline article:hover h3,
+.timeline article:focus-visible h3 {
+  color: #edffd3;
+}
+.timeline article:hover .dot,
+.timeline article:focus-visible .dot {
+  background: var(--lime);
+  box-shadow: 0 0 14px #bddc87;
+  animation: dot-pulse 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .timeline article:hover .dot,
+  .timeline article:focus-visible .dot {
+    animation: none;
+  }
+}
+
+@media (max-width: 759px) {
+  .journey h2 {
+    font-size: 34px;
+    margin-top: 25px;
+  }
+  .timeline {
+    grid-template-columns: 1fr;
+    gap: 38px;
+    margin-top: 45px;
+  }
+  .timeline article {
+    padding-left: 55px;
+  }
+  .step {
+    position: absolute;
+    left: 0;
+    top: 22px;
+    font-size: 27px;
+  }
+  .timeline h3 {
+    font-size: 23px;
+  }
+  .timeline p {
+    max-width: none;
+    font-size: 15px;
+  }
+  .timeline small {
+    font-size: 11px;
+  }
+}
