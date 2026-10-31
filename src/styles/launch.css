@@ -19,12 +19,12 @@
 .launch-badge {
   display: inline-flex;
   align-items: center;
-  gap: 50px;
+  gap: 30px;
   font: 14px monospace;
   letter-spacing: 3px;
   background: var(--lime);
   color: #1a2b18;
-  padding: 21px 30px;
+  padding: 21px 21px;
   border-radius: 12px;
   margin: 25px 0 12px;
   transition: background 0.6s ease;

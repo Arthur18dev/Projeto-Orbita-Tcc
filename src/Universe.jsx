@@ -196,11 +196,13 @@ export default function Universe({ paused, onReady }) {
       if (!still) elapsed += dt;
       if (still && !dirty) return;
       dirty = false;
-      scroll = still ? target : THREE.MathUtils.lerp(scroll, target, 0.055);
+      
+      scroll = still ? target : THREE.MathUtils.damp(scroll, target, 3, dt);
       const mobile = window.innerWidth < 760;
-      const journey = Math.min(Math.max(scroll - 0.65, 0) / 1.6, 1);
+      const raw = Math.min(Math.max(scroll - 0.1, 0) / 0.9, 1);
+      const journey = raw * raw * (3 - 2 * raw);
       system.position.set(
-        mobile ? 0 : 2.3 - journey * 4.1,
+        mobile ? 0 : 2.9 - journey * 5.2,
         mobile ? -1.15 : 0,
         0,
       );

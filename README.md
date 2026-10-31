@@ -1,5 +1,10 @@
 - Versão 2.0 do site 
 
+# OBS - Instalar o Node.js
+Windows (Recomendado): Use o winget no terminal (PowerShell/CMD): winget install OpenJS.NodeJS.LTS
+
+Para checar use: node -v
+
 # Órbita — Em breve
 
 Página conceitual em português, React + Vite + Three.js, responsiva. A Órbita é uma futura base para portfólios e projetos, inspirada em missões espaciais. Marca fictícia para o TCC, sem vínculo com empresas reais. Não há formulário de cadastro nem promessa de lançamento em uma data fictícia.
@@ -91,12 +96,69 @@ Abra pelo domínio CloudFront, inspecione Network: `POST /api/visits` deve retor
 
 O teste local valida payload, minimização de dados e falha HTTP. A integração real AWS depende da infraestrutura acima e não foi executada neste ambiente.
 
+## Registro de interesse
+
+O botão **"Registrar interesse"** da seção de lançamento só pode ser usado uma vez por navegador. Depois do clique, o registro fica salvo e continua valendo mesmo se a página for recarregada (F5).
+
+### Como funciona
+
+- O estado é guardado no `localStorage` do navegador, na chave `orbita-registered` com o valor `1`.
+- Ao carregar a página, o componente `Launch` lê essa chave. Se ela existir, o botão já nasce como **REGISTRADO ✓** e desativado.
+- O card "Sua presença foi confirmada" aparece **apenas no momento do clique**. Ele some sozinho depois de 8 segundos e não reaparece ao recarregar.
+- Se o navegador bloquear o armazenamento (por exemplo, em alguns modos de privacidade), o registro vale somente até a página ser recarregada.
+
+Arquivo: `src/main.jsx` (função `Launch`, `STORAGE_KEY` e `readRegistered`).
+
+### Como testar
+
+1. Abra o Console do navegador (F12) e limpe qualquer registro antigo:
+   ```js
+   localStorage.removeItem("orbita-registered");
+   ```
+2. Recarregue a página e clique em **Registrar interesse**.
+3. Confirme que o botão virou **REGISTRADO ✓**, ficou desativado e o card apareceu.
+4. Aperte F5. O botão deve continuar como **REGISTRADO ✓**, desativado, e o card **não** deve aparecer de novo.
+
+Para conferir o valor salvo: F12 > **Application** > **Local Storage** > `http://127.0.0.1:5173` > chave `orbita-registered`.
+
+### Como liberar um novo registro (testes)
+
+Rode no Console:
+```js
+localStorage.removeItem("orbita-registered");
+```
+e recarregue a página.
+
+### Limitações
+
+- O registro é **por navegador**, e não por pessoa. Limpar os dados do navegador, usar uma aba anônima ou trocar de navegador ou dispositivo permite registrar de novo.
+- O clique **não é enviado ao servidor**, então não entra em nenhuma contagem. Quem registra as visitas é o `recordPageView()` em `src/analytics.js`.
+- Para impedir registros repetidos de verdade, o backend precisaria guardar algum identificador da pessoa. Isso muda o que o aviso de privacidade diz hoje ("não usamos identificador permanente").
+
 ## Referências oficiais
 
+### Build e hospedagem
 - https://vite.dev/guide/static-deploy
 - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html
 - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/DownloadDistValuesCacheBehavior.html
 - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html
 - https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/adding-cloudfront-headers.html
+
+### React e animação 3D
+- https://react.dev/reference/react/useState (inicialização lazy do estado, usada em `readRegistered`)
+- https://threejs.org/docs/ (cena do planeta em `Universe.jsx`)
+
+### Registro de interesse e armazenamento
+- https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
+
+### CSS e animações
+- https://developer.mozilla.org/en-US/docs/Web/CSS/@property (ângulo animado da borda "cobra")
+- https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient
+- https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
+
+### Acessibilidade
+- https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible
+- https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog (janela "Sobre os dados")
+- https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html
 
 By Gabriel & Arthur 

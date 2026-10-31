@@ -218,14 +218,6 @@ nav a:hover {
     box-shadow 0.5s ease,
     transform 0.5s ease;
 }
-
-.nav-status:hover .dot,
-.nav-status:focus-visible .dot {
-  background: var(--lime);
-  box-shadow: 0 0 14px #bddc87;
-  animation: dot-pulse 1.4s ease-in-out infinite;
-}
-
 .eyebrow,
 .small-mono,
 .annotation {
@@ -788,4 +780,55 @@ dialog h2 {
   *::after {
     transition: none !important;
   }
+}
+
+.icon {
+  display: inline-flex;
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* menu: menor */
+.nav-status .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* lista da plataforma */
+.mission-select button .icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* botão do lançamento */
+.launch-badge .icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* rodapé */
+footer button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+footer button .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* o foguete "decola" no hover */
+.button:hover .icon,
+.nav-status:hover .icon,
+.mission-select button:hover .icon,
+.launch-badge:not(:disabled):hover .icon,
+footer button:hover .icon {
+  transform: translate(3px, -3px);
 }

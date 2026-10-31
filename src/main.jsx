@@ -36,7 +36,44 @@ const missions = [
 ];
 
 function Arrow() {
-  return <span aria-hidden="true">↗</span>;
+  return <Icon name="rocket" />;
+}
+
+function Icon({ name = "rocket" }) {
+  const icons = {
+    rocket: (
+      <>
+        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+      </>
+    ),
+    orbit: (
+      <>
+        <circle cx="12" cy="12" r="4" />
+        <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-25 12 12)" />
+      </>
+    ),
+    sparkle: (
+      <path d="M12 2l2.2 7.8L22 12l-7.8 2.2L12 22l-2.2-7.8L2 12l7.8-2.2z" />
+    ),
+  };
+
+  return (
+    <span className="icon" aria-hidden="true">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {icons[name]}
+      </svg>
+    </span>
+  );
 }
 
 function SocialIcon({ platform }) {
@@ -145,7 +182,7 @@ function Hero() {
           <br className="desktop" /> e tudo o que você ainda vai criar.
         </p>
         <a className="button" href="#origem">
-          Explore a missão <Arrow />
+        Explore a missão <Icon name="rocket" />
         </a>
         <div className="hero-note">
           <span>✳</span>
@@ -340,17 +377,32 @@ function Journey() {
   );
 }
 
+const STORAGE_KEY = "orbita-registered";
+
+function readRegistered() {
+  try {
+    return localStorage.getItem(STORAGE_KEY) === "1";
+  } catch {
+    return false; 
+  }
+}
+
 function Launch() {
-  const [registered, setRegistered] = useState(false);
+  const [registered, setRegistered] = useState(readRegistered);
   const [showToast, setShowToast] = useState(false);
 
   function handleRegister() {
-    if (registered) return; // já registrou, ignora novos cliques
+    if (registered) return;
+    try {
+      localStorage.setItem(STORAGE_KEY, "1");
+    } catch {
+      
+    }
     setRegistered(true);
     setShowToast(true);
   }
 
-  // o card some sozinho depois de 5 segundos
+  
   useEffect(() => {
     if (!showToast) return;
     const timer = setTimeout(() => setShowToast(false), 8000);
@@ -386,8 +438,8 @@ function Launch() {
             onClick={handleRegister}
             disabled={registered}
           >
-            <strong>{registered ? "REGISTRADO" : "EM BREVE"}</strong>{" "}
-            <span>{registered ? "✓" : "↗"}</span>
+            <strong>{registered ? "REGISTRADO" : "REGISTRAR INTERESSE"}</strong>{" "}
+            {registered ? <span>✓</span> : <Icon name="rocket" />}
           </button>
         </div>
 

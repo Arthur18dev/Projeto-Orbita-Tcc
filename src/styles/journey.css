@@ -19,15 +19,9 @@
   gap: 40px;
 }
 .timeline article {
-  border-top: 1px solid #9cab7d44;
+  border-top: 1px solid var(--lime);
   padding-top: 25px;
   position: relative;
-  cursor: pointer;
-  transform-origin: left top;
-  transition:
-    transform 0.5s ease,
-    border-color 0.5s ease,
-    opacity 0.9s;
 }
 .timeline article::before {
   content: "";
@@ -37,26 +31,25 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #65765e;
-  transition:
-    background 0.5s ease,
-    box-shadow 0.5s ease;
+  background: var(--lime);
+  box-shadow: 0 0 18px #bddc87;
 }
 .step {
   font: 38px Manrope;
-  color: #59705a;
+  color: var(--lime);
   display: block;
   margin-bottom: 25px;
 }
 .timeline small {
   font: 13px monospace;
-  color: #adc198;
   letter-spacing: 1.5px;
+  color: var(--lime);
 }
 .timeline h3 {
   font-size: 24px;
   letter-spacing: -1px;
   margin: 16px 0;
+  color: #edffd3;
 }
 .timeline p {
   font-size: 16px;
@@ -66,40 +59,8 @@
   width: 6px;
   height: 6px;
   margin-right: 9px;
-  background: #65765e;
-  box-shadow: none;
-  transition:
-    background 0.5s ease,
-    box-shadow 0.5s ease,
-    transform 0.5s ease;
-}
-.timeline .current .dot {
+  background: var(--lime);
   box-shadow: 0 0 12px #c3ef9766;
-}
-.timeline article:hover,
-.timeline article:focus-visible {
-  transform: scale(1.06);
-  border-top-color: var(--lime);
-}
-.timeline article:hover::before,
-.timeline article:focus-visible::before {
-  background: var(--lime);
-  box-shadow: 0 0 18px #bddc87;
-}
-.timeline article:hover .step,
-.timeline article:focus-visible .step,
-.timeline article:hover small,
-.timeline article:focus-visible small {
-  color: var(--lime);
-}
-.timeline article:hover h3,
-.timeline article:focus-visible h3 {
-  color: #edffd3;
-}
-.timeline article:hover .dot,
-.timeline article:focus-visible .dot {
-  background: var(--lime);
-  box-shadow: 0 0 14px #bddc87;
   animation: dot-pulse 1.4s ease-in-out infinite;
 }
 
