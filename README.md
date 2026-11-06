@@ -161,4 +161,4 @@ e recarregue a página.
 - https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog (janela "Sobre os dados")
 - https://www.w3.org/WAI/WCAG22/Understanding/focus-visible.html
 
-By Gabriel & Arthur 
+By Arthur 
